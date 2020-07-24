@@ -1,0 +1,65 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign In | Login to your Agri Guide Account</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'styles/accounts/login.css' %}">
+    <style type="text/css">
+        body {
+            background-image: url("{% static 'images/login_bg.png' %}");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="box">
+        <form method="post">
+            {% csrf_token %}
+            <label>
+                <input
+                        type="tel"
+                        minlength="10"
+                        maxlength="10"
+                        class="form-control text-fields"
+                        id="phone"
+                        name="phone"
+                        placeholder="Phone Number"
+                        value="{{ phone }}"
+                >
+                <br>
+                <input
+                        type="number"
+                        minlength="4"
+                        maxlength="4"
+                        class="form-control text-fields"
+                        id="otp"
+                        name="otp"
+                        placeholder="OTP"
+                >
+                <br>
+                <br>
+                <button type="submit" class="kButtons">Login</button>
+            </label>
+        </form>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+</body>
+</html>
