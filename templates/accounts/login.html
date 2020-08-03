@@ -7,7 +7,9 @@
     <title>Sign In | Login to your Agri Guide Account</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'styles/accounts/login.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/utils.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/accounts/accounts.css' %}">
+
     <style type="text/css">
         body {
             background-image: url("{% static 'images/login_bg.png' %}");
@@ -41,8 +43,7 @@
         <form method="post">
             {% csrf_token %}
             <label><input type="tel" minlength="10" maxlength="10" class="form-control text-fields"
-                                      id="phone" name="phone"
-                                      placeholder="Phone Number">
+                          id="phone" name="phone" placeholder="Phone Number" required>
                 <br>
                 <br>
                 <button type="submit" class="kButtons">Get OTP</button>

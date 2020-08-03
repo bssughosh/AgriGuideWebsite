@@ -7,7 +7,17 @@
     <title>Register | Create your Agri Guide Account</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'styles/accounts/reg2.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/accounts/accounts.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/utils.css' %}">
+    <style type="text/css">
+        body {
+            background-image: url("{% static 'images/register_bg.png' %}");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+
+        }
+    </style>
 </head>
 <body>
 
@@ -30,22 +40,29 @@
 
 {% if tog == 1 %}
 
-    <form method="post">
-        {% csrf_token %}
-        <label for="phone">Enter Phone: </label><input type="tel" name="phone" id="phone" maxlength="10"
-                                                       minlength="10">
-        <br>
-        <button type="submit" name="getter" id="getter">Get OTP</button>
-    </form>
+    <div class="container">
+        <div class="box">
+            <form method="post">
+                {% csrf_token %}
+                <label><input type="tel" name="phone" id="phone" maxlength="10" placeholder="Phone Number"
+                              class="form-control text-fields" minlength="10">
+                    <br>
+                    <button type="submit" name="getter" id="getter" class="kButtons">Get OTP</button>
+                </label>
+            </form>
+        </div>
+    </div>
 
 {% else %}
 
     <form method="post">
         {% csrf_token %}
-        <label for="phone">Enter Phone: </label><input type="tel" name="phone" id="phone" maxlength="10"
-                                                       minlength="10" value="{{ ph }}"><br>
-        <label for="otp">Enter OTP: </label><input type="number" name="otp" id="otp" maxlength="4" minlength="4"><br>
-        <button type="submit">Verify OTP</button>
+        <label><input type="tel" name="phone" id="phone" maxlength="10" placeholder="Phone Number"
+                      class="form-control text-fields" minlength="10" value="{{ ph }}"><br>
+            <input type="tel" name="otp" id="otp" maxlength="4" minlength="4" placeholder="OTP"
+                   class="form-control text-fields"><br>
+            <button type="submit" class="kButtons">Verify OTP</button>
+        </label>
     </form>
 
 {% endif %}

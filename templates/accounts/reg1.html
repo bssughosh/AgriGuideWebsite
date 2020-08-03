@@ -7,53 +7,81 @@
     <title>Register | Create your Agri Guide Account</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'styles/accounts/reg1.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/accounts/accounts.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/utils.css' %}">
+    <style type="text/css">
+        body {
+            background-image: url("{% static 'images/register_bg.png' %}");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+
+        }
+    </style>
 </head>
 <body>
 
-<form method="post">
-    {% csrf_token %}
-    <label for="states">Select State: </label>
-    <select id="states" name="states">
-        {% for i in states %}{% for j in s_d %}
-            {% if forloop.counter == forloop.parentloop.counter %}
-                {% if i == state %}
-                    <option value="{{ i }}" onclick="window.location.href='/register/{{ i }}/'"
-                            selected>{{ j }}</option>
-                {% else %}
-                    <option value="{{ i }}" onclick="window.location.href='/register/{{ i }}/'">{{ j }}</option>
-                {% endif %}
-            {% endif %}
-        {% endfor %}{% endfor %}
-    </select>
-    <br>
-    <label for="dists">Select District: </label>
-    <select id="dists" name="dists">
-        {% for i in dists %}{% for j in d_d %}
-            {% if forloop.counter == forloop.parentloop.counter %}
-                {% if i == dist %}
-                    <option value="{{ i }}" onclick="window.location.href='/register/{{ state }}/{{ i }}/'"
-                            selected>{{ j }}</option>
-                {% else %}
-                    <option value="{{ i }}"
-                            onclick="window.location.href='/register/{{ state }}/{{ i }}/'">{{ j }}</option>
-                {% endif %}
-            {% endif %}
-        {% endfor %}{% endfor %}
-    </select>
-    <br>
-    <label for="name">Enter Name: </label>
-    <input type="text" name="name" id="name" required>
-    <br>
-    <label for="address">Enter Address: </label>
-    <input type="text" name="address" id="address" required>
-    <br>
-    <label for="pincode">Enter Pincode: </label>
-    <input type="number" name="pincode" id="pincode" minlength="6" maxlength="6" required>
-    <br>
-    <button type="submit">Next</button>
-</form>
+<div class="container">
+    <div class="box">
 
+        <form method="post">
+            {% csrf_token %}
+            <label>
+                <select id="states" name="states" class="kSelect">
+                    {% for i in states %}{% for j in s_d %}
+                        {% if forloop.counter == forloop.parentloop.counter %}
+                            {% if i == state %}
+                                <option value="{{ i }}" onclick="window.location.href='/register/{{ i }}/'"
+                                        selected>{{ j }}</option>
+                            {% else %}
+                                <option value="{{ i }}"
+                                        onclick="window.location.href='/register/{{ i }}/'">{{ j }}</option>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}{% endfor %}
+                </select>
+                {#                <select id="states" name="states" class="kSelect"#}
+                {#                        onchange="if (this.selectedIndex.value !== 'undefined') window.location.href='/register/'+this.selectedIndex.value">#}
+                {#                    {% for i in states %}{% for j in s_d %}#}
+                {#                        {% if forloop.counter == forloop.parentloop.counter %}#}
+                {#                            {% if i == state %}#}
+                {#                                <option value="{{ i }}" selected>{{ j }}</option>#}
+                {#                            {% else %}#}
+                {#                                <option value="{{ i }}">{{ j }}</option>#}
+                {#                            {% endif %}#}
+                {#                        {% endif %}#}
+                {#                    {% endfor %}{% endfor %}#}
+                {#                </select>#}
+                <br>
+                <select id="dists" name="dists" class="kSelect" style="margin-bottom: 20px;">
+                    {% for i in dists %}{% for j in d_d %}
+                        {% if forloop.counter == forloop.parentloop.counter %}
+                            {% if i == dist %}
+                                <option value="{{ i }}" onclick="window.location.href='/register/{{ state }}/{{ i }}/'"
+                                        selected>{{ j }}</option>
+                            {% else %}
+                                <option value="{{ i }}"
+                                        onclick="window.location.href='/register/{{ state }}/{{ i }}/'">{{ j }}</option>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}{% endfor %}
+                </select>
+                <br>
+                <input type="text" name="name" id="name" class="form-control text-fields" placeholder="Enter Full Name"
+                       required>
+                <br>
+                <input type="text" name="address" id="address" class="form-control text-fields"
+                       placeholder="Enter Address" required>
+                <br>
+                <input type="tel" name="pincode" id="pincode" minlength="6" maxlength="6" placeholder="Enter Pincode"
+                       class="form-control text-fields" required>
+                <br>
+                <button type="submit" class="kButtons">Next</button>
+            </label>
+        </form>
+
+    </div>
+</div>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>

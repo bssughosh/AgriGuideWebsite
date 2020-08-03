@@ -7,7 +7,17 @@
     <title>Register | Create your Agri Guide Account</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'styles/accounts/reg3.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/accounts/accounts.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/utils.css' %}">
+    <style type="text/css">
+        body {
+            background-image: url("{% static 'images/register_bg.png' %}");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+
+        }
+    </style>
 </head>
 <body>
 
@@ -27,13 +37,17 @@
         {% endif %}
     {% endfor %}
 {% endif %}
-
-<form method="post">
-    {% csrf_token %}
-    <label for="aadhar">Aadhar Number: </label><input type="tel" name="aadhar" id="aadhar" maxlength="12"
-                                                      minlength="12"><br>
-    <button type="submit">Register</button>
-</form>
+<div class="container">
+    <div class="box">
+        <form method="post">
+            {% csrf_token %}
+            <label><input type="tel" name="aadhar" id="aadhar" maxlength="12" placeholder="Aadhar Number"
+                          class="form-control text-fields" minlength="12"><br>
+                <button type="submit" class="kButtons">Register</button>
+            </label>
+        </form>
+    </div>
+</div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
