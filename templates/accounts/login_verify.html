@@ -19,31 +19,33 @@
 </head>
 <body>
 
+{% if messages %}
+    {% for message in messages %}
+        {% if message.tags == 'warning' %}
+            <script>
+                var r = confirm("{{ message }}");
+                if (r === true) {
+                    window.location.href = '/register/';
+                } else {
+                }
+            </script>
+        {% endif %}
+        {% if message.tags == 'error' %}
+            <script>alert("{{ message }}")</script>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
 <div class="container">
     <div class="box">
         <form method="post">
             {% csrf_token %}
             <label>
-                <input
-                        type="tel"
-                        minlength="10"
-                        maxlength="10"
-                        class="form-control text-fields"
-                        id="phone"
-                        name="phone"
-                        placeholder="Phone Number"
-                        value="{{ phone }}"
-                >
+                <input type="tel" minlength="10" maxlength="10" class="form-control text-fields" id="phone" name="phone"
+                       placeholder="Phone Number" value="{{ phone }}">
                 <br>
-                <input
-                        type="number"
-                        minlength="4"
-                        maxlength="4"
-                        class="form-control text-fields"
-                        id="otp"
-                        name="otp"
-                        placeholder="OTP"
-                >
+                <input type="number" minlength="4" maxlength="4" class="form-control text-fields" id="otp" name="otp"
+                       placeholder="OTP">
                 <br>
                 <br>
                 <button type="submit" class="kButtons">Login</button>

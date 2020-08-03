@@ -8,5 +8,12 @@
 </head>
 <body>
 
+{% if user.is_authenticated %}
+    <p>{{ user.first_name }}</p>
+    <button type="button" onclick="window.location.href='/logout'">Logout</button>
+{% else %}
+
+
+{% endif %}
 </body>
 </html>

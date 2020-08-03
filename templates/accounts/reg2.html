@@ -11,16 +11,6 @@
 </head>
 <body>
 
-{#{% if messages %}#}
-{#    {% for msg in messages %}#}
-{#        <div class="alert alert-dark" role="alert">#}
-{#            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>#}
-{#            {{ msg.message }}<br>#}
-{#            <button type="button" onclick="window.location.href='/deleter/{{ obj }}/'">Login</button>#}
-{#        </div>#}
-{#    {% endfor %}#}
-{#{% endif %}#}
-
 {% if messages %}
     {% for message in messages %}
         {% if message.tags == 'warning' %}
@@ -42,7 +32,7 @@
 
     <form method="post">
         {% csrf_token %}
-        <label for="phone">Enter Phone: </label><input type="number" name="phone" id="phone" maxlength="10"
+        <label for="phone">Enter Phone: </label><input type="tel" name="phone" id="phone" maxlength="10"
                                                        minlength="10">
         <br>
         <button type="submit" name="getter" id="getter">Get OTP</button>
@@ -61,10 +51,12 @@
 {% endif %}
 
 {#{% if messages %}#}
-{#    {% for message in messages %}#}
-{#        {% if message.tags %}#}
-{#            <script>alert("{{ message }}")</script>#}
-{#        {% endif %}#}
+{#    {% for msg in messages %}#}
+{#        <div class="alert alert-dark" role="alert">#}
+{#            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>#}
+{#            {{ msg.message }}<br>#}
+{#            <button type="button" onclick="window.location.href='/deleter/{{ obj }}/'">Login</button>#}
+{#        </div>#}
 {#    {% endfor %}#}
 {#{% endif %}#}
 
