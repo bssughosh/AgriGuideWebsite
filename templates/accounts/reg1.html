@@ -20,48 +20,36 @@
     </style>
 </head>
 <body>
-
+<script type="application/javascript" src="{% static 'scripts/reg.js' %}"></script>
 <div class="container">
     <div class="box">
 
         <form method="post">
             {% csrf_token %}
             <label>
-                <select id="states" name="states" class="kSelect">
+
+                <select id="states" name="states" class="kSelect"
+                        onchange="if (typeof(this.selectedIndex) != 'undefined') check()">
                     {% for i in states %}{% for j in s_d %}
                         {% if forloop.counter == forloop.parentloop.counter %}
                             {% if i == state %}
-                                <option value="{{ i }}" onclick="window.location.href='/register/{{ i }}/'"
-                                        selected>{{ j }}</option>
+                                <option value="{{ i }}" selected>{{ j }}</option>
                             {% else %}
-                                <option value="{{ i }}"
-                                        onclick="window.location.href='/register/{{ i }}/'">{{ j }}</option>
+                                <option value="{{ i }}">{{ j }}</option>
                             {% endif %}
                         {% endif %}
                     {% endfor %}{% endfor %}
                 </select>
-                {#                <select id="states" name="states" class="kSelect"#}
-                {#                        onchange="if (this.selectedIndex.value !== 'undefined') window.location.href='/register/'+this.selectedIndex.value">#}
-                {#                    {% for i in states %}{% for j in s_d %}#}
-                {#                        {% if forloop.counter == forloop.parentloop.counter %}#}
-                {#                            {% if i == state %}#}
-                {#                                <option value="{{ i }}" selected>{{ j }}</option>#}
-                {#                            {% else %}#}
-                {#                                <option value="{{ i }}">{{ j }}</option>#}
-                {#                            {% endif %}#}
-                {#                        {% endif %}#}
-                {#                    {% endfor %}{% endfor %}#}
-                {#                </select>#}
                 <br>
-                <select id="dists" name="dists" class="kSelect" style="margin-bottom: 20px;">
+
+                <select id="dists" name="dists" class="kSelect" style="margin-bottom: 20px;"
+                        onchange="if (typeof(this.selectedIndex) != 'undefined') check1()">
                     {% for i in dists %}{% for j in d_d %}
                         {% if forloop.counter == forloop.parentloop.counter %}
                             {% if i == dist %}
-                                <option value="{{ i }}" onclick="window.location.href='/register/{{ state }}/{{ i }}/'"
-                                        selected>{{ j }}</option>
+                                <option value="{{ i }}" selected>{{ j }}</option>
                             {% else %}
-                                <option value="{{ i }}"
-                                        onclick="window.location.href='/register/{{ state }}/{{ i }}/'">{{ j }}</option>
+                                <option value="{{ i }}">{{ j }}</option>
                             {% endif %}
                         {% endif %}
                     {% endfor %}{% endfor %}
