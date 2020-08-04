@@ -27,7 +27,6 @@
         <form method="post">
             {% csrf_token %}
             <label>
-
                 <select id="states" name="states" class="kSelect"
                         onchange="if (typeof(this.selectedIndex) != 'undefined') check()">
                     {% for i in states %}{% for j in s_d %}
@@ -41,7 +40,6 @@
                     {% endfor %}{% endfor %}
                 </select>
                 <br>
-
                 <select id="dists" name="dists" class="kSelect" style="margin-bottom: 20px;"
                         onchange="if (typeof(this.selectedIndex) != 'undefined') check1()">
                     {% for i in dists %}{% for j in d_d %}
