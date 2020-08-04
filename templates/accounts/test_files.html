@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<select id="states" name="states" class="kSelect">
+    {% for i in states %}{% for j in s_d %}
+        {% if forloop.counter == forloop.parentloop.counter %}
+            {% if i == state %}
+                <option value="{{ i }}" onclick="window.location.href='/register/{{ i }}/'"
+                        selected>{{ j }}</option>
+            {% else %}
+                <option value="{{ i }}"
+                        onclick="window.location.href='/register/{{ i }}/'">{{ j }}</option>
+            {% endif %}
+        {% endif %}
+    {% endfor %}{% endfor %}
+</select>
+<select id="dists" name="dists" class="kSelect" style="margin-bottom: 20px;">
+    {% for i in dists %}{% for j in d_d %}
+        {% if forloop.counter == forloop.parentloop.counter %}
+            {% if i == dist %}
+                <option value="{{ i }}" onclick="window.location.href='/register/{{ state }}/{{ i }}/'"
+                        selected>{{ j }}</option>
+            {% else %}
+                <option value="{{ i }}"
+                        onclick="window.location.href='/register/{{ state }}/{{ i }}/'">{{ j }}</option>
+            {% endif %}
+        {% endif %}
+    {% endfor %}{% endfor %}
+</select>
+</body>
+</html>
