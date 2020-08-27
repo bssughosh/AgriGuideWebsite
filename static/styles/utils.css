@@ -18,6 +18,20 @@
     text-align: center;
 }
 
+.kTables {
+    width: 300px;
+    text-align: center;
+}
+
+.kTables > thead {
+    background: #559B47;
+    color: white;
+}
+
+.kTables > tbody {
+    background: #BEEBD0;
+}
+
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
